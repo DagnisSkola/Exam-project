@@ -1,0 +1,15 @@
+[15-Dec-2025 01:02:18 Europe/Riga] PHP Warning:  require_once(../database.php): Failed to open stream: No such file or directory in /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/register.php on line 3
+[15-Dec-2025 01:02:18 Europe/Riga] PHP Fatal error:  Uncaught Error: Failed opening required '../database.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/register.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/register.php on line 3
+[15-Dec-2025 01:11:18 Europe/Riga] PHP Warning:  require_once(database.php): Failed to open stream: No such file or directory in /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/register.php on line 6
+[15-Dec-2025 01:11:18 Europe/Riga] PHP Fatal error:  Uncaught Error: Failed opening required 'database.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/register.php:6
+Stack trace:
+#0 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/register.php on line 6
+[16-Dec-2025 22:32:35 Europe/Riga] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'grobina1_janeks.BU_transactions' doesn't exist in /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/calendar.php:46
+Stack trace:
+#0 /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/calendar.php(46): mysqli_prepare()
+#1 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/user/php/calendar.php on line 46

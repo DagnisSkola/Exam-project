@@ -1,0 +1,39 @@
+[15-Dec-2025 21:48:37 Europe/Riga] PHP Warning:  require_once(../assets/database.php): Failed to open stream: No such file or directory in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php on line 9
+[15-Dec-2025 21:48:37 Europe/Riga] PHP Fatal error:  Uncaught Error: Failed opening required '../assets/database.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php on line 9
+[15-Dec-2025 21:51:28 Europe/Riga] PHP Warning:  require_once(../assets/database.php): Failed to open stream: No such file or directory in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php on line 8
+[15-Dec-2025 21:51:28 Europe/Riga] PHP Fatal error:  Uncaught Error: Failed opening required '../assets/database.php' (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php on line 8
+[15-Dec-2025 22:30:55 Europe/Riga] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'last_login' in 'WHERE' in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php:31
+Stack trace:
+#0 /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php(31): mysqli_query()
+#1 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php on line 31
+[15-Dec-2025 22:31:23 Europe/Riga] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'last_login' in 'SELECT' in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php:39
+Stack trace:
+#0 /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php(39): mysqli_query()
+#1 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php on line 39
+[15-Dec-2025 22:31:28 Europe/Riga] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'last_login' in 'WHERE' in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php:31
+Stack trace:
+#0 /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php(31): mysqli_query()
+#1 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/index.php on line 31
+[15-Dec-2025 22:32:16 Europe/Riga] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'last_login' in 'SELECT' in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php:69
+Stack trace:
+#0 /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php(69): mysqli_query()
+#1 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php on line 69
+[15-Dec-2025 22:33:34 Europe/Riga] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'last_login' in 'SELECT' in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php:69
+Stack trace:
+#0 /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php(69): mysqli_query()
+#1 {main}
+  thrown in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php on line 69
+[15-Dec-2025 22:38:38 Europe/Riga] PHP Warning:  Undefined array key "user_id" in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php on line 193
+[15-Dec-2025 22:38:38 Europe/Riga] PHP Warning:  Undefined array key "user_id" in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php on line 193
+[15-Dec-2025 22:38:57 Europe/Riga] PHP Warning:  Undefined array key "user_id" in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php on line 193
+[15-Dec-2025 22:38:57 Europe/Riga] PHP Warning:  Undefined array key "user_id" in /home/grobina1/public_html/4pt/janeks/Exam-project/admin/php/users.php on line 193
