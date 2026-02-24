@@ -65,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Ieiet - Budgetiva</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../../assets/image/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
     <div class="auth-container">
@@ -111,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             required
                         >
                         <button type="button" class="password-toggle" onclick="togglePassword('password')">
-                            👁️
+                            <i class="fa-solid fa-eye"></i>
                         </button>
                     </div>
                 </div>
@@ -139,19 +140,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h2 class="visual-title">Tavi finanšu mērķi gaida tevi</h2>
                 <div class="visual-features">
                     <div class="visual-feature">
-                        <span class="visual-icon">📊</span>
+                        <span class="visual-icon"><i class="fa-solid fa-chart-simple"></i></span>
                         <span>Detalizēti ienākumu un izdevumu pārskati</span>
                     </div>
                     <div class="visual-feature">
-                        <span class="visual-icon">📅</span>
+                        <span class="visual-icon"><i class="fa-solid fa-calendar"></i></span>
                         <span>Kalendāra skats visām transakcijām</span>
                     </div>
                     <div class="visual-feature">
-                        <span class="visual-icon">💰</span>
+                        <span class="visual-icon"><i class="fa-solid fa-sack-dollar"></i></span>
                         <span>Izseko savu budžetu reāllaikā</span>
                     </div>
                     <div class="visual-feature">
-                        <span class="visual-icon">🎯</span>
+                        <span class="visual-icon"><i class="fa-solid fa-bullseye"></i></span>
                         <span>Sasniedz savus finanšu mērķus</span>
                     </div>
                 </div>

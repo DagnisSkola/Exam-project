@@ -98,7 +98,7 @@ while ($row = mysqli_fetch_assoc($recurring_result)) {
 }
 mysqli_stmt_close($stmt_recurring);
 
-// Calculate total
+// Calculate total for entire month
 $total_income = 0;
 $total_expense = 0;
 foreach ($transactions as $day_transactions) {
@@ -111,6 +111,27 @@ foreach ($transactions as $day_transactions) {
     }
 }
 $balance = $total_income - $total_expense;
+
+// Calculate today's balance (only up to today)
+$today_income = 0;
+$today_expense = 0;
+$current_day = date('j');
+$is_current_month = ($current_month == date('n') && $current_year == date('Y'));
+
+if ($is_current_month) {
+    foreach ($transactions as $day => $day_transactions) {
+        if ($day <= $current_day) {
+            foreach ($day_transactions as $transaction) {
+                if ($transaction['type'] === 'income') {
+                    $today_income += $transaction['amount'];
+                } else {
+                    $today_expense += $transaction['amount'];
+                }
+            }
+        }
+    }
+}
+$today_balance = $today_income - $today_expense;
 
 // Calander generator
 $first_day_of_month = mktime(0, 0, 0, $current_month, 1, $current_year);
@@ -198,6 +219,16 @@ if ($next_month > 12) {
             </div>
 
             <div class="stats-grid">
+                <?php if ($is_current_month): ?>
+                <div class="stat-card stat-card-today">
+                    <div class="stat-card-icon"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="stat-card-content">
+                        <div class="stat-card-label">Bilance</div>
+                        <div class="stat-card-value">€<?php echo number_format($today_balance, 2); ?></div>
+                    </div>
+                </div>
+                <?php endif; ?>
+                
                 <div class="stat-card stat-card-income">
                     <div class="stat-card-icon"><i class="fa-solid fa-sack-dollar"></i></div>
                     <div class="stat-card-content">
@@ -215,7 +246,7 @@ if ($next_month > 12) {
                 <div class="stat-card stat-card-balance">
                     <div class="stat-card-icon"><i class="fa-solid fa-landmark"></i></div>
                     <div class="stat-card-content">
-                        <div class="stat-card-label">Bilance</div>
+                        <div class="stat-card-label">Mēneša bilance</div>
                         <div class="stat-card-value">€<?php echo number_format($balance, 2); ?></div>
                     </div>
                 </div>
@@ -433,6 +464,8 @@ if ($next_month > 12) {
 
     <script>
         const transactionsData = <?php echo json_encode($transactions); ?>;
+        const monthlyIncome = <?php echo $total_income; ?>;
+        const monthlyExpense = <?php echo $total_expense; ?>;
     </script>
     <script src="../js/script.js"></script>
     <script src="../js/calendar.js"></script>

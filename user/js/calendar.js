@@ -77,6 +77,7 @@ window.addEventListener('click', function(e) {
     const incomeModal = document.getElementById('incomeModal');
     const expenseModal = document.getElementById('expenseModal');
     const dayModal = document.getElementById('dayModal');
+    const warningModal = document.getElementById('warningModal');
     
     if (e.target === incomeModal) {
         closeIncomeModal();
@@ -87,6 +88,9 @@ window.addEventListener('click', function(e) {
     if (e.target === dayModal) {
         closeDayModal();
     }
+    if (e.target === warningModal) {
+        closeWarningModal();
+    }
 });
 
 // close modal with esc
@@ -95,8 +99,110 @@ document.addEventListener('keydown', function(e) {
         closeIncomeModal();
         closeExpenseModal();
         closeDayModal();
+        closeWarningModal();
     }
 });
+
+// Validation for expense form
+document.addEventListener('DOMContentLoaded', function() {
+    const expenseForm = document.querySelector('#expenseModal form');
+    
+    if (expenseForm) {
+        expenseForm.addEventListener('submit', function(e) {
+            const expenseAmount = parseFloat(document.getElementById('expense_amount').value) || 0;
+            const newTotalExpense = monthlyExpense + expenseAmount;
+            
+            // Check if new expense would exceed income
+            if (newTotalExpense > monthlyIncome) {
+                e.preventDefault();
+                showWarningModal(expenseAmount, newTotalExpense);
+            }
+        });
+    }
+});
+
+// Show warning modal
+function showWarningModal(expenseAmount, newTotalExpense) {
+    const deficit = newTotalExpense - monthlyIncome;
+    
+    // Create modal if it doesn't exist
+    let warningModal = document.getElementById('warningModal');
+    if (!warningModal) {
+        warningModal = document.createElement('div');
+        warningModal.id = 'warningModal';
+        warningModal.className = 'modal';
+        warningModal.innerHTML = `
+            <div class="modal-content warning-modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title warning-title">⚠️ Brīdinājums!</h2>
+                </div>
+                <div class="warning-message">
+                    <p class="warning-text">Šis izdevums pārsniegs tavus mēneša ienākumus!</p>
+                    <div class="warning-details">
+                        <div class="warning-stat">
+                            <span class="warning-label">Mēneša ienākumi:</span>
+                            <span class="warning-value income">+€${monthlyIncome.toFixed(2)}</span>
+                        </div>
+                        <div class="warning-stat">
+                            <span class="warning-label">Pašreizējie izdevumi:</span>
+                            <span class="warning-value expense">-€${monthlyExpense.toFixed(2)}</span>
+                        </div>
+                        <div class="warning-stat">
+                            <span class="warning-label">Jauns izdevums:</span>
+                            <span class="warning-value expense">-€${expenseAmount.toFixed(2)}</span>
+                        </div>
+                        <div class="warning-divider"></div>
+                        <div class="warning-stat total">
+                            <span class="warning-label">Kopējie izdevumi:</span>
+                            <span class="warning-value expense">-€${newTotalExpense.toFixed(2)}</span>
+                        </div>
+                        <div class="warning-stat deficit">
+                            <span class="warning-label">Deficīts:</span>
+                            <span class="warning-value deficit-value">-€${deficit.toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <p class="warning-question">Vai tiešām vēlies pievienot šo izdevumu?</p>
+                </div>
+                <div class="warning-actions">
+                    <button class="btn btn-secondary" onclick="closeWarningModal()">Atcelt</button>
+                    <button class="btn btn-danger" onclick="confirmExpense()">Jā, pievienot</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(warningModal);
+    } else {
+        // Update values in existing modal
+        warningModal.querySelector('.warning-value.income').textContent = `+€${monthlyIncome.toFixed(2)}`;
+        warningModal.querySelectorAll('.warning-value.expense')[0].textContent = `-€${monthlyExpense.toFixed(2)}`;
+        warningModal.querySelectorAll('.warning-value.expense')[1].textContent = `-€${expenseAmount.toFixed(2)}`;
+        warningModal.querySelectorAll('.warning-value.expense')[2].textContent = `-€${newTotalExpense.toFixed(2)}`;
+        warningModal.querySelector('.warning-value.deficit-value').textContent = `-€${deficit.toFixed(2)}`;
+    }
+    
+    warningModal.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close warning modal
+function closeWarningModal() {
+    const modal = document.getElementById('warningModal');
+    if (modal) {
+        modal.classList.remove('modal-open');
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Confirm expense submission
+function confirmExpense() {
+    closeWarningModal();
+    const expenseForm = document.querySelector('#expenseModal form');
+    if (expenseForm) {
+        // Remove event listener temporarily
+        const newForm = expenseForm.cloneNode(true);
+        expenseForm.parentNode.replaceChild(newForm, expenseForm);
+        newForm.submit();
+    }
+}
 
 // animations for cards
 document.addEventListener('DOMContentLoaded', function() {

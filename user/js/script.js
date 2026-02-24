@@ -1,14 +1,19 @@
 // Password visible toggle
 function togglePassword(inputId) {
     const input = document.getElementById(inputId);
-    const button = input.nextElementSibling;
+    // Find the <i> tag inside the button next to the input
+    const icon = input.nextElementSibling.querySelector('i');
     
     if (input.type === 'password') {
         input.type = 'text';
-        button.textContent = '🙈';
+        // Change from "eye" to "eye-slash"
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
     } else {
         input.type = 'password';
-        button.textContent = '👁️';
+        // Change back to "eye"
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
     }
 }
 

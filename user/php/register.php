@@ -94,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Reģistrēties - Budgetiva</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" href="../../assets/image/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 <body>
     <div class="auth-container">
@@ -101,8 +102,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="auth-header">
                 <a href="index.php" class="back-link">← Atpakaļ</a>
                 <div class="auth-logo">
-                    <img src="../../assets/image/logo.png" alt="Budgetiva Logo" class="logo-img">
-                    <span class="logo-text">Budgetiva</span>
+                    <img src="../../assets/image/logo.png" alt="Budgetar Logo" class="logo-img">
+                    <span class="logo-text">Budgetar</span>
                 </div>
                 <h1 class="auth-title">Izveido kontu</h1>
                 <p class="auth-subtitle">Sāc pārvaldīt savas finanses šodien</p>
@@ -162,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             minlength="8"
                         >
                         <button type="button" class="password-toggle" onclick="togglePassword('password')">
-                            👁️
+                            <i class="fa-solid fa-eye"></i>
                         </button>
                     </div>
                     <span class="form-hint">Vismaz 8 simboli</span>
@@ -180,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             required
                         >
                         <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
-                            👁️
+                            <i class="fa-solid fa-eye"></i>
                         </button>
                     </div>
                 </div>
