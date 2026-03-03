@@ -11,9 +11,9 @@ Budgetivia is a personal finance and budgeting project designed to help users tr
   - [x] Izdevumi (Expenses) - one-time
   - [x] Ikmēneša ienākumi (Monthly recurring income)
   - [x] Ikmēneša izdevumi (Monthly recurring expenses)
-- [ ] Add budget validation and warnings
-  - [ ] Implement warning message when Izdevumi exceeds Ienākumi
-  - [ ] Display warning UI component (toast/alert/banner)
+- [x] Add budget validation and warnings
+  - [x] Implement warning message when Izdevumi exceeds Ienākumi
+  - [x] Display warning UI component (toast/alert/banner)
 
 ## Reports Section (Pārskati)
 - [ ] Design reports layout
