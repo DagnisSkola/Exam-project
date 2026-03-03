@@ -112,6 +112,26 @@ foreach ($transactions as $day_transactions) {
 }
 $balance = $total_income - $total_expense;
 
+// Calculate carried balance from ALL months before the current one
+// This includes actual past transactions + recurring transactions projected into past months
+$stmt_carried = mysqli_prepare($savienojums, "SELECT type, SUM(amount) as total FROM BU_transactions WHERE user_id = ? AND date < ? GROUP BY type");
+mysqli_stmt_bind_param($stmt_carried, "is", $user_id, $first_day);
+mysqli_stmt_execute($stmt_carried);
+$carried_result = mysqli_stmt_get_result($stmt_carried);
+
+$carried_income = 0;
+$carried_expense = 0;
+while ($carried_row = mysqli_fetch_assoc($carried_result)) {
+    if ($carried_row['type'] === 'income') {
+        $carried_income = $carried_row['total'];
+    } else {
+        $carried_expense = $carried_row['total'];
+    }
+}
+mysqli_stmt_close($stmt_carried);
+
+$carried_balance = $carried_income - $carried_expense;
+
 // Calculate today's balance (only up to today)
 $today_income = 0;
 $today_expense = 0;
@@ -131,7 +151,7 @@ if ($is_current_month) {
         }
     }
 }
-$today_balance = $today_income - $today_expense;
+$today_balance = $carried_balance + $today_income - $today_expense;
 
 // Calander generator
 $first_day_of_month = mktime(0, 0, 0, $current_month, 1, $current_year);
@@ -178,7 +198,7 @@ if ($next_month > 12) {
                     <span class="nav-icon"><i class="fa-solid fa-calendar"></i></span>
                     <span class="nav-text">Kalendārs</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="parskati.php" class="nav-item">
                     <span class="nav-icon"><i class="fa-solid fa-chart-pie"></i></span>
                     <span class="nav-text">Pārskati</span>
                 </a>
